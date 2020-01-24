@@ -4,15 +4,18 @@ from tkinter import *
 import random
 import time
 
+#Capturando o nível e convertendo para inteiro
 level = int(input("Qual nível você gostaria de jogar? 1/2/3/4/5 \n"))
 length = 500/level
 
 
+#Inicializando variaveis
 root = Tk()
 root.title("Ping Pong")
 root.resizable(0,0)
 root.wm_attributes("-topmost", -1)
 
+#Definindo o tamanho do canvas
 canvas = Canvas(root, width=800, height=600, bd=0,highlightthickness=0)
 canvas.pack()
 
@@ -22,6 +25,7 @@ root.update()
 count = 0
 lost = False
 
+#Classe Bola
 class Bola:
     def __init__(self, canvas, Barra, color):
         self.canvas = canvas
@@ -29,6 +33,7 @@ class Bola:
         self.id = canvas.create_oval(0, 0, 15, 15, fill=color)
         self.canvas.move(self.id, 245, 200)
 
+        #Lista
         starts_x = [-3, -2, -1, 1, 2, 3]
         random.shuffle(starts_x)
 
@@ -38,7 +43,7 @@ class Bola:
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
 
-
+    #Função
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
 
